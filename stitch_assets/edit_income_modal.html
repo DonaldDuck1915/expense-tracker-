@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Edit Income | Modern Fiscal Intelligence</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "income": "#059669",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-surface": "#191b23",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "background-alt": "#F8FAFC",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191b23",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-container": "#bc4800",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-low": "#f3f3fe",
+                        "inverse-surface": "#2e3039",
+                        "primary-container": "#2563eb",
+                        "background": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary": "#943700",
+                        "inverse-on-surface": "#f0f0fb",
+                        "error-container": "#ffdad6",
+                        "expense": "#DC2626",
+                        "error": "#EF4444",
+                        "on-primary-container": "#eeefff",
+                        "primary": "#004ac6",
+                        "on-secondary-container": "#54647a",
+                        "secondary": "#505f76",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-tertiary-container": "#ffede6",
+                        "success": "#10B981",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "outline": "#737686",
+                        "surface-container-high": "#e7e7f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e1e2ed",
+                        "surface-container-highest": "#e1e2ed",
+                        "warning": "#F59E0B",
+                        "surface-dim": "#d9d9e5",
+                        "on-surface-variant": "#434655",
+                        "surface-container": "#ededf9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .animate-in {
+            animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- Sidebar (Shared Component Anchor) -->
+<aside class="fixed left-0 h-full w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg space-y-md hidden md:flex">
+<div class="px-lg flex items-center space-x-3 mb-xl">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md font-black text-primary leading-none">MFI Dashboard</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">Professional Tier</p>
+</div>
+</div>
+<nav class="flex-1 px-md">
+<ul class="space-y-sm">
+<li><a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-label-caps text-label-caps uppercase">Overview</span></a></li>
+<li><a class="flex items-center space-x-3 text-primary font-bold border-l-4 border-primary bg-secondary-container/30 px-4 py-2 rounded-r-lg" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span><span class="font-label-caps text-label-caps uppercase">All Expenses</span></a></li>
+<li><a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">account_balance_wallet</span><span class="font-label-caps text-label-caps uppercase">Monthly Budget</span></a></li>
+<li><a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">ads_click</span><span class="font-label-caps text-label-caps uppercase">Financial Goals</span></a></li>
+<li><a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">shield</span><span class="font-label-caps text-label-caps uppercase">Security</span></a></li>
+</ul>
+</nav>
+<div class="px-lg pt-lg">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:shadow-lg transition-all active:scale-95">Upgrade Plan</button>
+</div>
+<footer class="px-md mt-auto pt-lg space-y-sm">
+<a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">help</span><span class="font-label-caps text-label-caps uppercase">Help Center</span></a>
+<a class="flex items-center space-x-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-caps text-label-caps uppercase">Settings</span></a>
+</footer>
+</aside>
+<!-- Main Content Context (Behind Modal) -->
+<main class="md:ml-[280px] min-h-screen">
+<header class="w-full top-0 bg-surface-container-lowest border-b border-outline-variant shadow-sm z-10 sticky">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center space-x-lg">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Transactions</h1>
+<nav class="hidden lg:flex space-x-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md" href="#">Transactions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center space-x-md">
+<button class="bg-primary text-on-primary px-lg py-2 rounded-full font-body-md hover:opacity-90 transition-opacity">Add Expense</button>
+<img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a middle-aged tech professional with a friendly smile, clean-cut appearance, set against a blurred modern office background with soft daylight. The image has a high-end corporate feel with a crisp, bright aesthetic consistent with a financial services platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2lAZBs1O9taqennnjsbkLT4_NvNAyTgpamDSNw8NJrJWSU13Wnu8tZL2U5SWE27ubB2_xRWxcZoZUfAfB54p4ndIwLPW42nNxhYsx8hnXCT3oO0tvHZwNWVOD-ufAeLbLr83TLIuFKv9tSHK0uPruE-wo9Qlc1fwGsQPKP6LRlfV-yFCNAmdavrVXCsveYBvMYyB2ocwup9gh3wOfa6HpQNhqUPYo4qaFzwO1ZuMejW5cyvG-tOFC">
+</div>
+</div>
+</header>
+<!-- Dummy Dashboard Content -->
+<div class="p-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Total Balance</p>
+<h3 class="font-display-lg text-[40px] font-bold text-on-surface">$124,592.10</h3>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Income (This Month)</p>
+<h3 class="font-display-lg text-[40px] font-bold text-income">$8,500.00</h3>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Expenses (This Month)</p>
+<h3 class="font-display-lg text-[40px] font-bold text-expense">$3,120.45</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h4 class="font-title-md text-title-md font-bold">Recent Transactions</h4>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">filter_list</span>
+</div>
+<div class="p-lg">
+<table class="w-full">
+<thead>
+<tr class="text-left font-label-caps text-label-caps text-outline uppercase border-b border-outline-variant">
+<th class="pb-3">Source / Entity</th>
+<th class="pb-3">Category</th>
+<th class="pb-3">Date</th>
+<th class="pb-3 text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="font-body-md divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-high transition-colors cursor-pointer group">
+<td class="py-4 font-bold">TechCorp Global Inc.</td>
+<td class="py-4">
+<span class="bg-income/10 text-income px-3 py-1 rounded-full text-xs font-bold">Salary</span>
+</td>
+<td class="py-4 text-on-surface-variant">Oct 15, 2023</td>
+<td class="py-4 text-right text-income font-bold font-data-mono">+$4,250.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4" id="edit-income-modal">
+<!-- Modal Content -->
+<div class="bg-surface-container-lowest w-full max-w-[560px] rounded-2xl shadow-2xl overflow-hidden animate-in border border-outline-variant">
+<!-- Modal Header -->
+<div class="px-xl py-lg bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-income/10 rounded-lg flex items-center justify-center text-income">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md font-bold text-on-surface">Edit Income</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Update your recurring revenue details.</p>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant" onclick="document.getElementById('edit-income-modal').style.display='none'">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-xl space-y-xl">
+<form class="space-y-lg">
+<!-- Source Name -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="income-source">Income Source</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">business</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md" id="income-source" placeholder="e.g. Acme Corp" type="text" value="TechCorp Global Inc.">
+</div>
+</div>
+<!-- Amount & Currency -->
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="income-amount">Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-outline">$</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-data-mono" id="income-amount" placeholder="0.00" type="text" value="4,250.00">
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="income-frequency">Frequency</label>
+<div class="relative">
+<select class="w-full px-4 py-3 bg-surface-container rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md appearance-none" id="income-frequency">
+<option>Monthly</option>
+<option selected="">Bi-Weekly</option>
+<option>Weekly</option>
+<option>One-time</option>
+</select>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Category & Date -->
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Category</label>
+<div class="relative">
+<select class="w-full px-4 py-3 bg-surface-container rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md appearance-none">
+<option selected="">Salary</option>
+<option>Investment</option>
+<option>Freelance</option>
+<option>Rental</option>
+</select>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline pointer-events-none">category</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Next Payment Date</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-container rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md" type="date" value="2023-10-15">
+</div>
+</div>
+</div>
+<!-- Toggle Options -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<span class="font-body-md">Payment Notifications</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-on-surface-variant">Update past transactions</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</form>
+</div>
+<!-- Modal Footer -->
+<div class="px-xl py-lg bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="flex items-center space-x-2 text-expense font-bold hover:bg-error-container/20 px-4 py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">delete</span>
+<span>Remove Entry</span>
+</button>
+<div class="flex space-x-md">
+<button class="px-lg py-2.5 rounded-xl border border-outline-variant font-bold text-on-surface hover:bg-surface-container-high transition-all" onclick="document.getElementById('edit-income-modal').style.display='none'">Cancel</button>
+<button class="px-lg py-2.5 rounded-xl bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:opacity-90 transition-all active:scale-95">Save Changes</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component Anchor) -->
+<footer class="md:ml-[280px] bg-surface-container border-t border-outline-variant">
+<div class="w-full px-lg py-xl flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="mb-md md:mb-0">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Modern Fiscal Intelligence</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">© 2024 Modern Fiscal Intelligence. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-lg gap-y-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all uppercase tracking-widest" href="#">Contact Support</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all uppercase tracking-widest" href="#">Security Overview</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction logic
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('edit-income-modal').style.display = 'none';
+            }
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            let modal = document.getElementById('edit-income-modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body></html>

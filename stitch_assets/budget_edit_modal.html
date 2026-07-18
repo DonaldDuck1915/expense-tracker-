@@ -1,0 +1,372 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Edit Budget | Modern Fiscal Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "income": "#059669",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-surface": "#191b23",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "background-alt": "#F8FAFC",
+                    "on-error-container": "#93000a",
+                    "on-background": "#191b23",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#bc4800",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-low": "#f3f3fe",
+                    "inverse-surface": "#2e3039",
+                    "primary-container": "#2563eb",
+                    "background": "#faf8ff",
+                    "surface": "#faf8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary": "#943700",
+                    "inverse-on-surface": "#f0f0fb",
+                    "error-container": "#ffdad6",
+                    "expense": "#DC2626",
+                    "error": "#EF4444",
+                    "on-primary-container": "#eeefff",
+                    "primary": "#004ac6",
+                    "on-secondary-container": "#54647a",
+                    "secondary": "#505f76",
+                    "surface-tint": "#0053db",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-tertiary-container": "#ffede6",
+                    "success": "#10B981",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#360f00",
+                    "outline": "#737686",
+                    "surface-container-high": "#e7e7f3",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-variant": "#e1e2ed",
+                    "surface-container-highest": "#e1e2ed",
+                    "warning": "#F59E0B",
+                    "surface-dim": "#d9d9e5",
+                    "on-surface-variant": "#434655",
+                    "surface-container": "#ededf9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .modal-overlay {
+            background-color: rgba(25, 27, 35, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-background-alt font-body-md text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-low w-full top-0 shadow-sm border-b border-outline-variant dark:border-outline z-30">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">Modern Fiscal Intelligence</span>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 cursor-pointer active:opacity-80">Dashboard</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 cursor-pointer active:opacity-80">Transactions</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 cursor-pointer active:opacity-80">Reports</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 cursor-pointer active:opacity-80">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-sm bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">Add Expense</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a financial advisor in a bright, modern corporate office setting. The person is wearing a navy blue blazer and smiling warmly at the camera. Soft natural sunlight streams through large windows in the background, creating a high-key, clean aesthetic with neutral whites and subtle blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMMytZRHjUQaCpDC4iwlR5gh_rOwkeP4tShlyCJbO8dMJWIJsCy0El73nt1ye9YaGLb3sX8CIzZth_od2s3-ToW6Yqlhv8Jqa42Vegy2lkCjWiejhgP1BtL_UolQJXnNDvK9zNIwjm2pnsUahIMqvTTDIUNiZBdBwd5PWHQnTVpb9dVD8MsfMYiNekv3LyCMQjUcJJidQBH3LHyDW2B2F7hWcTe_OEw6eFfocDFldhGCFUR49C58et">
+</div>
+</div>
+</div>
+</header>
+<main class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full w-[280px] bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline py-lg space-y-md shrink-0">
+<div class="px-lg pb-md border-b border-outline-variant/30">
+<div class="flex items-center gap-sm mb-base">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-title-md text-title-md font-black text-primary">MFI Dashboard</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Professional Tier</p>
+</div>
+<nav class="flex-grow">
+<ul class="space-y-base px-sm">
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> <span class="font-label-caps text-label-caps">Overview</span></a></li>
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span> <span class="font-label-caps text-label-caps">All Expenses</span></a></li>
+<li><a class="flex items-center gap-md px-md py-sm text-primary font-bold border-l-4 border-primary bg-secondary-container/30 transition-all rounded-r-lg"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span> <span class="font-label-caps text-label-caps">Monthly Budget</span></a></li>
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="ads_click">ads_click</span> <span class="font-label-caps text-label-caps">Financial Goals</span></a></li>
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="shield">shield</span> <span class="font-label-caps text-label-caps">Security</span></a></li>
+</ul>
+</nav>
+<div class="px-md mt-auto">
+<button class="w-full py-md bg-secondary-container text-on-secondary-container rounded-xl font-label-caps text-label-caps hover:brightness-95 transition-all">Upgrade Plan</button>
+</div>
+<div class="px-sm pt-md border-t border-outline-variant/30">
+<ul class="space-y-base">
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="help">help</span> <span class="font-label-caps text-label-caps">Help Center</span></a></li>
+<li><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"><span class="material-symbols-outlined" data-icon="settings">settings</span> <span class="font-label-caps text-label-caps">Settings</span></a></li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Area with Background UI for Context -->
+<section class="flex-grow p-xl relative overflow-hidden">
+<div class="max-w-4xl mx-auto space-y-xl">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Budget Management</h1>
+<p class="text-on-surface-variant font-body-md mt-xs">Optimize your spending by adjusting monthly category limits.</p>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant font-body-sm bg-surface-container px-md py-sm rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                        June 2024
+                    </div>
+</div>
+<!-- Background Cards (Simulated Dashboard) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg opacity-40 select-none">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Travel &amp; Commute</span>
+<p class="text-on-surface font-title-md text-title-md">$1,240.00 <span class="text-on-surface-variant text-sm font-normal">/ $1,500.00</span></p>
+</div>
+<span class="px-sm py-xs bg-success/10 text-success rounded font-label-caps text-[10px]">ON TRACK</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 82%"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Office Supplies</span>
+<p class="text-on-surface font-title-md text-title-md">$560.40 <span class="text-on-surface-variant text-sm font-normal">/ $600.00</span></p>
+</div>
+<span class="px-sm py-xs bg-warning/10 text-warning rounded font-label-caps text-[10px]">CAUTION</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-warning h-full" style="width: 93%"></div>
+</div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 modal-overlay z-40 flex items-center justify-center p-md">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="edit_note">edit_note</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface leading-none">Edit Budget Limit</h2>
+<p class="text-on-surface-variant font-label-caps text-label-caps mt-1">Marketing &amp; Advertising</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-lg space-y-xl">
+<!-- Summary Bar -->
+<div class="bg-background-alt p-md rounded-lg border border-outline-variant/50">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">CURRENT SPEND</p>
+<p class="font-headline-lg text-2xl text-on-surface">$2,450.00</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">REMAINING</p>
+<p class="font-headline-lg text-2xl text-success" id="remaining-val">$550.00</p>
+</div>
+</div>
+<div class="relative w-full h-3 bg-surface-variant rounded-full overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-primary transition-all duration-500" id="progress-bar-spent" style="width: 81.6%"></div>
+<div class="absolute right-0 top-0 h-full bg-expense opacity-0 transition-opacity" id="progress-bar-warning" style="width: 0%"></div>
+</div>
+<div class="flex justify-between mt-xs">
+<span class="text-[10px] font-label-caps text-on-surface-variant">0%</span>
+<span class="text-[10px] font-label-caps text-on-surface-variant" id="limit-label">CURRENT LIMIT: $3,000.00</span>
+</div>
+</div>
+<!-- Input Field -->
+<div class="space-y-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="new-limit">NEW MONTHLY LIMIT ($)</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="text-on-surface-variant font-body-lg">$</span>
+</div>
+<input class="block w-full pl-xl pr-md py-lg bg-surface-container-low border border-outline-variant rounded-lg font-data-mono text-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" id="new-limit" placeholder="0.00" step="100" type="number" value="3000">
+</div>
+<!-- Feedback Message -->
+<div class="flex items-start gap-xs p-sm rounded bg-primary/5 text-primary" id="feedback-area">
+<span class="material-symbols-outlined text-sm mt-0.5" data-icon="info">info</span>
+<p class="font-body-sm text-body-sm">Increasing the limit by <span class="font-bold" id="increase-amt">$0</span> will allocate more funds from your surplus.</p>
+</div>
+</div>
+<!-- Quick Presets -->
+<div class="space-y-sm">
+<span class="block font-label-caps text-label-caps text-on-surface-variant">QUICK ADJUSTMENTS</span>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm border border-outline-variant rounded hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" onclick="adjust(3500)">+ $500</button>
+<button class="flex-1 py-sm border border-outline-variant rounded hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" onclick="adjust(4000)">+ $1,000</button>
+<button class="flex-1 py-sm border border-outline-variant rounded hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" onclick="adjust(2500)">MINIMUM</button>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-lg py-lg bg-surface-container-high flex gap-md justify-end">
+<button class="px-xl py-md text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors">Cancel Changes</button>
+<button class="px-xl py-md bg-primary text-on-primary rounded-lg font-label-caps text-label-caps shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all" id="save-btn">Confirm Limit Update</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full bottom-0 border-t border-outline-variant dark:border-outline z-10 relative">
+<div class="w-full px-lg py-xl flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="mb-md md:mb-0">
+<span class="font-title-md text-title-md font-bold text-on-surface dark:text-on-surface">MFI</span>
+<span class="ml-md font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">© 2024 Modern Fiscal Intelligence. All rights reserved.</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all cursor-pointer">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all cursor-pointer">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all cursor-pointer">Contact Support</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all cursor-pointer">Security Overview</a>
+</div>
+</div>
+</footer>
+<script>
+        const input = document.getElementById('new-limit');
+        const remainingVal = document.getElementById('remaining-val');
+        const progressBarSpent = document.getElementById('progress-bar-spent');
+        const progressBarWarning = document.getElementById('progress-bar-warning');
+        const feedbackArea = document.getElementById('feedback-area');
+        const increaseAmt = document.getElementById('increase-amt');
+        const limitLabel = document.getElementById('limit-label');
+        const saveBtn = document.getElementById('save-btn');
+
+        const SPENT = 2450;
+        const INITIAL_LIMIT = 3000;
+
+        function updateUI() {
+            const val = parseFloat(input.value) || 0;
+            const diff = val - SPENT;
+            
+            // Update Remaining Text
+            remainingVal.textContent = `$${Math.abs(diff).toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+            
+            if (diff < 0) {
+                remainingVal.classList.remove('text-success');
+                remainingVal.classList.add('text-expense');
+                
+                // Progress bar logic
+                const overPercentage = (Math.abs(diff) / val) * 100;
+                progressBarSpent.style.width = '100%';
+                progressBarWarning.style.opacity = '1';
+                progressBarWarning.style.width = `${Math.min(overPercentage, 100)}%`;
+                
+                feedbackArea.classList.remove('bg-primary/5', 'text-primary');
+                feedbackArea.classList.add('bg-expense/5', 'text-expense');
+                feedbackArea.innerHTML = `<span class="material-symbols-outlined text-sm mt-0.5" data-icon="warning">warning</span><p class="font-body-sm text-body-sm">Warning: This limit is below your current spend. You will be <span class="font-bold">$${Math.abs(diff).toLocaleString()}</span> over budget.</p>`;
+                saveBtn.classList.replace('bg-primary', 'bg-expense');
+            } else {
+                remainingVal.classList.add('text-success');
+                remainingVal.classList.remove('text-expense');
+                
+                const percentage = (SPENT / val) * 100;
+                progressBarSpent.style.width = `${percentage}%`;
+                progressBarWarning.style.opacity = '0';
+                
+                const change = val - INITIAL_LIMIT;
+                feedbackArea.classList.add('bg-primary/5', 'text-primary');
+                feedbackArea.classList.remove('bg-expense/5', 'text-expense');
+                
+                if (change >= 0) {
+                    feedbackArea.innerHTML = `<span class="material-symbols-outlined text-sm mt-0.5" data-icon="info">info</span><p class="font-body-sm text-body-sm">Increasing the limit by <span class="font-bold">$${change.toLocaleString()}</span> will allocate more funds from your surplus.</p>`;
+                } else {
+                    feedbackArea.innerHTML = `<span class="material-symbols-outlined text-sm mt-0.5" data-icon="info">info</span><p class="font-body-sm text-body-sm">Decreasing the limit by <span class="font-bold">$${Math.abs(change).toLocaleString()}</span> helps save more this month.</p>`;
+                }
+                saveBtn.classList.replace('bg-expense', 'bg-primary');
+            }
+        }
+
+        function adjust(val) {
+            input.value = val;
+            updateUI();
+        }
+
+        input.addEventListener('input', updateUI);
+        
+        // Modal Entrance Animation Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+        });
+    </script>
+</body></html>

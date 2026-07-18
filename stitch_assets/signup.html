@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | Modern Fiscal Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #004ac6;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-low": "#f3f3fe",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "expense": "#DC2626",
+                      "surface-tint": "#0053db",
+                      "secondary-container": "#d0e1fb",
+                      "background": "#faf8ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-background": "#191b23",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#e7e7f3",
+                      "primary-container": "#2563eb",
+                      "surface-bright": "#faf8ff",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f0f0fb",
+                      "surface-dim": "#d9d9e5",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed": "#dbe1ff",
+                      "on-surface-variant": "#434655",
+                      "on-error": "#ffffff",
+                      "background-alt": "#F8FAFC",
+                      "tertiary-fixed": "#ffdbcd",
+                      "inverse-primary": "#b4c5ff",
+                      "outline": "#737686",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-container": "#ededf9",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-primary-container": "#eeefff",
+                      "error": "#EF4444",
+                      "surface-container-lowest": "#ffffff",
+                      "warning": "#F59E0B",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-variant": "#e1e2ed",
+                      "on-secondary-container": "#54647a",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-surface": "#191b23",
+                      "success": "#10B981",
+                      "error-container": "#ffdad6",
+                      "surface": "#faf8ff",
+                      "inverse-surface": "#2e3039",
+                      "primary": "#004ac6",
+                      "income": "#059669",
+                      "tertiary": "#943700",
+                      "secondary": "#505f76",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#bc4800",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e1e2ed",
+                      "on-secondary-fixed-variant": "#38485d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "base": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "title-md": ["Hanken Grotesk"],
+                      "body-lg": ["Inter"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Ambient Decorative Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<main class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-xl min-h-[600px] bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden relative z-10 m-margin-mobile">
+<!-- Left Side: Brand & Visual -->
+<section class="hidden md:flex flex-col justify-between p-xl bg-surface-container-low border-r border-outline-variant relative overflow-hidden">
+
+<div class="relative z-20">
+<div class="flex items-center gap-sm mb-xl">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary" data-icon="account_balance">account_balance</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Modern Fiscal Intelligence</h1>
+</div>
+<div class="space-y-lg mt-xl">
+<h2 class="font-display-lg text-display-lg text-on-surface leading-tight">Master your financial ecosystem.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Join over 50,000 professionals who use MFI to track, analyze, and optimize their business expenses with surgical precision.</p>
+</div>
+</div>
+<div class="relative z-20 pt-xl">
+<div class="glass-panel p-md rounded-xl flex items-center gap-md">
+<div class="flex -space-x-2">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="A professional headshot of a smiling female executive in a modern workspace, soft bokeh background, high-end photography, Corporate Modern style, bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEqOmQozQCm0xRUFUQ74lobff6ThGoEwgGnGdQMPcrrx1bKYxPtsGmpRELp6mgD7pTUEC1hyS38jobxMp5F8_trHQ4bq4qSmKB0RnGNmDMHtWZgClMG0TsgowPE_GoppXHGr6ksonDeUKw7trwQbklb9zGhP3focRUQNlgBpqAcW2ilXX7Xo8u7DJGJssatPWvPy8NrPC40dDeiYRiBhuHD1FrRtZFGh4T1ukbpPWntZ3kGKK-P8Lf"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="A profile photo of a diverse young professional man wearing glasses, looking confidently at the camera, professional lighting, clean minimalist office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB8ZC7aDFlPOu2H5tOpvBSIKF6NHxREvgh5J_UYacMmvpTKiEv0xfWdlCeXN92yk7ibdCU32iul3Abu3xN8Kttis68O1RsQ2qoVLLnTdf__8_kCGspu7dQNvvPV0Y93zVvhKUrGD1ZJmF-XHtxLwXrkMDx-OcsrAyu5ZBw60sqN9ZhWrlc_6yzITjcPREusUB5qH6DGMsePQEKyE8dEeHhJ7ToyDp1gFR8JRY9mK7jFCPq03IuRMdn"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="A portrait of a middle-aged male business owner, warm and approachable expression, natural daylighting, high-quality lens blur for professional depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj7RTw4yMv9RuJSBBYAogKuDXoZRBQj38eIrSfdFLDNmVSmlY1cRo8uLQx5tOo0uqMcZfYSkXVQ3M1iVpYSsSCyMFkHZ6H1aOQG0Cs5j7GhhAm1ncYa6kx3BS7HxEf3pp6D6hmJoVUJmms0YayVQ7FI6LOSaCrViVl3aUx-HN0VuyVM88Gp9GJH3avMscGV5eZDAa_Waca6Xks6odbiI468s3tO47CiX8U-Q2C0NZg8W0z-XKelCef"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-bold text-on-surface">5 stars</span> by 2,000+ business owners.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Right Side: Signup Form -->
+<section class="flex flex-col justify-center p-xl md:px-xl md:py-xl">
+<div class="max-w-[400px] mx-auto w-full">
+<!-- Mobile Header -->
+<div class="md:hidden flex items-center gap-sm mb-lg">
+<div class="w-8 h-8 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary text-[20px]" data-icon="account_balance">account_balance</span>
+</div>
+<span class="font-headline text-title-md text-primary">MFI</span>
+</div>
+<header class="mb-xl">
+<h2 class="font-headline text-headline-lg text-on-surface mb-xs">Create Account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Start your 14-day free trial. No credit card required.</p>
+</header>
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="relative floating-label-input">
+<input class="w-full h-14 px-md pt-4 pb-1 bg-surface-container border border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md peer" id="fullname" placeholder=" " type="text"/>
+<label class="absolute left-md top-4 text-on-surface-variant font-body-md transition-all pointer-events-none" for="fullname">Full Name</label>
+</div>
+<!-- Email Address -->
+<div class="relative floating-label-input">
+<input class="w-full h-14 px-md pt-4 pb-1 bg-surface-container border border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md peer" id="email" placeholder=" " type="email"/>
+<label class="absolute left-md top-4 text-on-surface-variant font-body-md transition-all pointer-events-none" for="email">Work Email</label>
+</div>
+<!-- Password -->
+<div class="relative floating-label-input group">
+<input class="w-full h-14 px-md pt-4 pb-1 bg-surface-container border border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md peer" id="password" placeholder=" " type="password"/>
+<label class="absolute left-md top-4 text-on-surface-variant font-body-md transition-all pointer-events-none" for="password">Password</label>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Password Requirements (Micro-interaction hint) -->
+<div class="flex flex-wrap gap-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-success" data-icon="check_circle">check_circle</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">8+ Characters</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="circle">circle</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">1 Number</span>
+</div>
+</div>
+<!-- Terms of Service -->
+<div class="flex items-start gap-md pt-xs">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 text-primary border-outline-variant rounded focus:ring-primary cursor-pointer" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed" for="terms">
+                            I agree to the <a class="text-primary hover:underline font-semibold" href="#">Terms of Service</a> and <a class="text-primary hover:underline font-semibold" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-lg hover:shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-sm" type="submit">
+<span>Create Account</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Social Signup Divider -->
+<div class="relative py-md flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-md font-label-caps text-label-caps text-outline uppercase tracking-widest">Or Sign up with</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm h-12 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors font-body-md text-on-surface">
+<div class="w-5 h-5 flex items-center justify-center">
+<svg height="18" viewbox="0 0 24 24" width="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg>
+</div>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-sm h-12 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors font-body-md text-on-surface">
+<span class="material-symbols-outlined text-on-surface" data-icon="corporate_fare" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+                            SSO
+                        </button>
+</div>
+</form>
+<footer class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Already have an account? <a class="text-primary font-bold hover:underline" href="#">Log in</a>
+</p>
+</footer>
+</div>
+</section>
+</main>
+<!-- Simple Page Footer (Suppressed based on "Transactional" rule, but minimal copyright remains) -->
+<div class="mt-xl text-center pb-xl relative z-10">
+<p class="font-label-caps text-label-caps text-outline tracking-wider uppercase">© 2024 Modern Fiscal Intelligence. All rights reserved.</p>
+</div>
+<script>
+        // Micro-interactions for form feedback
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('shadow-sm');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('shadow-sm');
+            });
+        });
+
+        // Simple visibility toggle for password
+        const toggleBtn = document.querySelector('button .material-symbols-outlined[data-icon="visibility"]');
+        if (toggleBtn) {
+            toggleBtn.parentElement.addEventListener('click', () => {
+                const passInput = document.getElementById('password');
+                const icon = toggleBtn;
+                if (passInput.type === 'password') {
+                    passInput.type = 'text';
+                    icon.textContent = 'visibility_off';
+                } else {
+                    passInput.type = 'password';
+                    icon.textContent = 'visibility';
+                }
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modern Fiscal Intelligence | Professional Expense Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(71, 85, 105, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: rotate(3deg) translateY(0); }
+            50% { transform: rotate(3deg) translateY(-20px); }
+        }
+        .animate-float-custom {
+            animation: float 6s ease-in-out infinite;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-low": "#f3f3fe",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "expense": "#DC2626",
+                      "surface-tint": "#0053db",
+                      "secondary-container": "#d0e1fb",
+                      "background": "#faf8ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-background": "#191b23",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#e7e7f3",
+                      "primary-container": "#2563eb",
+                      "surface-bright": "#faf8ff",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f0f0fb",
+                      "surface-dim": "#d9d9e5",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed": "#dbe1ff",
+                      "on-surface-variant": "#434655",
+                      "on-error": "#ffffff",
+                      "background-alt": "#F8FAFC",
+                      "tertiary-fixed": "#ffdbcd",
+                      "inverse-primary": "#b4c5ff",
+                      "outline": "#737686",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-container": "#ededf9",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-primary-container": "#eeefff",
+                      "error": "#EF4444",
+                      "surface-container-lowest": "#ffffff",
+                      "warning": "#F59E0B",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-variant": "#e1e2ed",
+                      "on-secondary-container": "#54647a",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-surface": "#191b23",
+                      "success": "#10B981",
+                      "error-container": "#ffdad6",
+                      "surface": "#faf8ff",
+                      "inverse-surface": "#2e3039",
+                      "primary": "#004ac6",
+                      "income": "#059669",
+                      "tertiary": "#943700",
+                      "secondary": "#505f76",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#bc4800",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e1e2ed",
+                      "on-secondary-fixed-variant": "#38485d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "base": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "title-md": ["Hanken Grotesk"],
+                      "body-lg": ["Inter"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background dark:bg-on-background text-on-surface dark:text-on-primary-container font-body-md overflow-x-hidden transition-colors duration-300">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-50 w-full bg-surface-container-lowest dark:bg-surface-container-low shadow-sm border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">Modern Fiscal Intelligence</span>
+</div>
+<nav class="hidden md:flex items-center space-x-xl">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-label-caps text-label-caps" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-label-caps text-label-caps" href="#">Transactions</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-label-caps text-label-caps" href="#">Reports</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-label-caps text-label-caps" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors" id="theme-toggle">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+</button>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps hidden sm:block" href="javascript:void(0)" onclick="location.href='#'">Login</a>
+<button class="hidden lg:block px-lg py-2 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-opacity" onclick="location.href='#'">Add Expense</button>
+<button class="md:hidden p-2 rounded-full hover:bg-surface-container transition-colors" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a business executive for a financial application user profile, set against a clean, softly lit studio background with neutral tones. The lighting is bright and even, reinforcing a trustworthy and corporate aesthetic using a high-key light mode style. The individual is smiling confidently, reflecting a sense of security and professional satisfaction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSx47Q4RdEILblUMGz8anJumzX2cdcmUt0iJGcjqKjnSqpVVCOPHFYnZAX4gXmRbahcF3n8udQc8eqiaordMRLkBIjurrFQDvv_7hiDtAwvGfvmV14L5WDRBK1GA66zzCQgVML6Rdg94wLPvUiXzre7LDrh0etE3qSz0wu8HvpqFRO6SCOSnyEP570oaXpXKiu4bSc5Q49BwFlRAKEyYMV5dDUaxXFEhHlGdnDVjs_J0z3gJZI9Nhd"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Mobile Menu Overlay -->
+<div class="fixed inset-0 z-[60] bg-background/95 backdrop-blur-sm hidden flex-col p-xl" id="mobile-menu">
+<div class="flex justify-between items-center mb-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-lg text-headline-lg font-bold text-primary">MFI</span>
+</div>
+<button class="p-2" id="close-mobile-menu"><span class="material-symbols-outlined text-3xl">close</span></button>
+</div>
+<nav class="flex flex-col gap-lg">
+<a class="text-2xl font-bold text-primary" href="#">Dashboard</a>
+<a class="text-2xl text-on-surface-variant" href="#">Transactions</a>
+<a class="text-2xl text-on-surface-variant" href="#">Reports</a>
+<a class="text-2xl text-on-surface-variant" href="#">Settings</a>
+<hr class="border-outline-variant my-md"/>
+<a class="text-2xl text-on-surface-variant" href="javascript:void(0)" onclick="location.href='#'">Login</a>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl text-xl font-bold" onclick="location.href='#'">Start Free Trial</button>
+</nav>
+</div>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[80vh] lg:min-h-[870px] flex items-center justify-center overflow-hidden px-margin-mobile md:px-lg">
+<div class="relative z-10 max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div class="flex flex-col space-y-lg animate-fade-in text-center lg:text-left">
+<span class="font-label-caps text-label-caps text-primary dark:text-primary-fixed-dim tracking-widest uppercase">Intelligent Wealth Management</span>
+<h1 class="font-display-lg text-4xl md:text-5xl lg:text-display-lg leading-tight dark:text-surface-bright">Master Your Finances with <span class="text-primary dark:text-primary-fixed">Precision.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant dark:text-outline-variant max-w-lg mx-auto lg:mx-0">
+                    The ultimate professional SaaS expense tracker designed for modern founders and meticulous professionals. Control every cent with automated insights and military-grade security.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md pt-4 justify-center lg:justify-start">
+<button class="px-xl py-4 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container rounded-xl font-title-md text-title-md shadow-lg hover:translate-y-[-2px] hover:shadow-xl transition-all" onclick="location.href='#'">Start Free Trial</button>
+<button class="px-xl py-4 border-2 border-primary dark:border-primary-fixed text-primary dark:text-primary-fixed rounded-xl font-title-md text-title-md hover:bg-primary-fixed/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                        View Demo
+                    </button>
+</div>
+<div class="flex items-center gap-4 pt-sm justify-center lg:justify-start">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-300"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-400"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant">Trusted by 2,500+ Financial Advisors</p>
+</div>
+</div>
+<div class="relative h-[400px] md:h-[600px] mt-xl lg:mt-0">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="glass-card p-sm rounded-[2rem] shadow-2xl relative z-20 w-[95%] lg:w-[90%] animate-float-custom">
+<img class="rounded-xl w-full border border-outline-variant" data-alt="A clean and modern UI dashboard interface for a financial expense tracking SaaS application. The design features minimalist line charts in primary blue, sleek data tables with organized financial figures, and colorful category badges. The aesthetic is professional and high-fidelity, set against a pristine white background with subtle depth through ambient shadows, conveying clarity and financial control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHO8LpD6ghGaSXRNaC-2xS5aYexjXd0Kiz2MLWEpGRuO02zwMm809SPQZZxG7mkSaYRTXo59LgAkRaAdedf-3AxetTxssl9DeMmq59nAyFsPGSCTMPRg-5WmTwEzed4D9W85YVAcNu9yiL1SC2He1dBfcNKvsd9NuRNJNUGwb-0p2Dc8QacscM1oZBr6TqoksPs1jKCG3vRvzNg5ujwqQ6-eeoOLm4QmeCqumnGUrJCrKrIvI2N-XF"/>
+</div>
+<div class="absolute top-0 right-4 lg:top-10 lg:right-0 glass-card p-md rounded-xl shadow-xl z-30 animate-pulse-slow">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-success/20 rounded-full">
+<span class="material-symbols-outlined text-success">trending_up</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline-variant">Savings Rate</p>
+<p class="font-title-md text-title-md dark:text-surface-bright">+24.5%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface-container-low dark:bg-surface-dim px-margin-mobile reveal" id="features">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-3xl md:text-headline-lg mb-4 dark:text-surface-bright">Engineered for Fiscal Excellence</h2>
+<p class="text-on-surface-variant dark:text-outline-variant max-w-2xl mx-auto">Our features are designed to provide maximum visibility into your financial health without the manual overhead.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg h-auto">
+<!-- Large Feature -->
+<div class="md:col-span-2 bg-surface-container-lowest dark:bg-surface-container-low rounded-3xl p-xl border border-outline-variant dark:border-outline flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-4xl mb-md">analytics</span>
+<h3 class="font-title-md text-title-md text-2xl mb-sm dark:text-surface-bright">Advanced Financial Analytics</h3>
+<p class="text-on-surface-variant dark:text-outline-variant font-body-md max-w-sm">Deep dive into your spending patterns with predictive AI models that forecast your future cash flow and identify potential savings.</p>
+</div>
+<div class="mt-lg relative z-10">
+<button class="flex items-center gap-2 text-primary dark:text-primary-fixed font-bold group-hover:gap-4 transition-all">Explore Analytics <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px] text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+</div>
+<!-- Side Feature 1 -->
+<div class="bg-primary-container rounded-3xl p-xl flex flex-col justify-between text-on-primary-container relative overflow-hidden group hover:scale-[1.02] transition-transform">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-md">verified_user</span>
+<h3 class="font-title-md text-title-md text-xl mb-sm">Secure Data Vault</h3>
+<p class="font-body-sm opacity-90">256-bit AES encryption and multi-factor authentication protect your sensitive financial data around the clock.</p>
+</div>
+<div class="absolute -bottom-4 -right-4">
+<span class="material-symbols-outlined text-8xl opacity-20">shield</span>
+</div>
+</div>
+<!-- Side Feature 2 -->
+<div class="bg-surface-container-highest dark:bg-surface-container rounded-3xl p-xl flex flex-col justify-between border border-outline-variant dark:border-outline group hover:scale-[1.02] transition-transform">
+<div>
+<span class="material-symbols-outlined text-tertiary dark:text-tertiary-fixed-dim text-4xl mb-md">receipt_long</span>
+<h3 class="font-title-md text-title-md text-xl mb-sm dark:text-surface-bright">Automated Expense Tracking</h3>
+<p class="text-on-surface-variant dark:text-outline-variant font-body-sm">Connect your bank accounts and let MFI automatically categorize and tag every transaction in real-time.</p>
+</div>
+<div class="flex items-center gap-2 pt-4">
+<div class="px-3 py-1 bg-white dark:bg-surface-dim rounded-full text-[10px] font-bold border border-outline-variant dark:border-outline uppercase dark:text-surface-bright">Real-time</div>
+<div class="px-3 py-1 bg-white dark:bg-surface-dim rounded-full text-[10px] font-bold border border-outline-variant dark:border-outline uppercase dark:text-surface-bright">AI Sync</div>
+</div>
+</div>
+<!-- Bottom Small Feature -->
+<div class="bg-surface-container-lowest dark:bg-surface-container-low rounded-3xl p-xl border border-outline-variant dark:border-outline flex items-center justify-between group hover:shadow-xl transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-container dark:bg-secondary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-on-primary-fixed-variant">smartphone</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md dark:text-surface-bright">Mobile Native App</h4>
+<p class="text-on-surface-variant dark:text-outline-variant font-body-sm">Track on the go.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<!-- Bottom Long Feature -->
+<div class="bg-surface-container-lowest dark:bg-surface-container-low rounded-3xl p-xl border border-outline-variant dark:border-outline flex items-center gap-xl md:col-span-1 group hover:shadow-xl transition-all">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl">account_balance_wallet</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md dark:text-surface-bright">Budgeting Logic</h4>
+<p class="text-on-surface-variant dark:text-outline-variant font-body-sm">Custom thresholds and automated alerts for your budget limits.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof / Testimonials -->
+<section class="py-24 overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-md">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg mb-4 dark:text-surface-bright">Trusted by the most meticulous financial minds.</h2>
+<p class="text-on-surface-variant dark:text-outline-variant">Join thousands of professionals who have revolutionized their fiscal workflow.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline dark:border-outline flex items-center justify-center hover:bg-surface-container dark:hover:bg-surface-container transition-colors"><span class="material-symbols-outlined dark:text-surface-bright">chevron_left</span></button>
+<button class="w-12 h-12 rounded-full border border-outline dark:border-outline flex items-center justify-center hover:bg-surface-container dark:hover:bg-surface-container transition-colors"><span class="material-symbols-outlined dark:text-surface-bright">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Testimonial 1 -->
+<div class="glass-card p-xl rounded-3xl border border-outline-variant hover:shadow-2xl hover:translate-y-[-8px] transition-all duration-300">
+<div class="flex text-warning mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic mb-xl text-on-surface-variant dark:text-outline-variant">"The level of detail in the reports is unparalleled. As a CFO, I need precision, and Modern Fiscal Intelligence delivers exactly that."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a professional woman in business attire, looking confident and poised, set in a modern, sunlit office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEuBijWUlAmFmBxgE9_ygEv7gOM5awy_wM-mDEev9Dv3sVAt9X6-TvNMf_lx_heYhFpxms_4DBY86szDPmDXkC8PYKYoR4bcCnKjRbtolAasqNIWZDqbbhd5qHFfsTd9hqRoIxlo2ZZiC3yomkIUz3ANYl7Va8GTch62PPRhJoo_IRewtJo2CzIbFHwUndp1LjzP4me9aYjnms4lHCfsXxaCe3facR_Qx29SHrKcr5TEQ8eKHFtLiz"/>
+</div>
+<div>
+<p class="font-bold font-title-md dark:text-surface-bright">Sarah Jenkins</p>
+<p class="font-body-sm text-on-surface-variant dark:text-outline-variant">CFO at TechNovate</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-card p-xl rounded-3xl border border-outline-variant hover:shadow-2xl hover:translate-y-[-8px] transition-all duration-300">
+<div class="flex text-warning mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic mb-xl text-on-surface-variant dark:text-outline-variant">"Tracking expenses across multiple business entities used to be a nightmare. MFI's consolidation features changed everything for us."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sharp, high-resolution headshot of a middle-aged male executive in a sleek modern suit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJg9fHg-jG6yMaUvYxBzHBvzzyOFMGRCn48tqnE4h9YGOKHv6wmIDruPFGRjyk7NdrEBy-QxsGZOQ8GcqI9oeCIODoedZKID0KkSPWMWJWYQnC_3a3ke9988hXCuidDkPCRAIiwXX4keXoIOEBbQdpKxgS7OwY-uBhQW2IkduNDne4ElfiDtMhcfj8teh2TtP6jyp-Tu8NoB8SMYmhIEFwxwr0BZF6Y-cIfPd0iiSPqi6G3MK8zaxt"/>
+</div>
+<div>
+<p class="font-bold font-title-md dark:text-surface-bright">David Chen</p>
+<p class="font-body-sm text-on-surface-variant dark:text-outline-variant">Founder, Apex Ventures</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-card p-xl rounded-3xl border border-outline-variant hover:shadow-2xl hover:translate-y-[-8px] transition-all duration-300">
+<div class="flex text-warning mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic mb-xl text-on-surface-variant dark:text-outline-variant">"Finally, an expense tracker that doesn't feel like a toy. It's built for power users who care about data integrity and speed."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young entrepreneur in a modern casual-business style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8gxI8hDSXE_5oOG5qQ8wwsMzz8GDv7qf6-3Lf5CwIgmovEm0MlvkVezyG6AeqTgaFpuaGTKuAxR_HWKg6EZNVK-g8XyNsMh48SL64TReaCfdxfl49G9leO3SB-43hty5NgzFNXpMXAVNW41M4Qlb0xC5lFL2s6dfswA35TuMsc0slydxlpwOXF4d9u2BQBfB8h3nSKKL3jMfdLZtAf9YxebTnCqacmdHAin8EwifFNVeQudkgEt55"/>
+</div>
+<div>
+<p class="font-bold font-title-md dark:text-surface-bright">Marcus Thorne</p>
+<p class="font-body-sm text-on-surface-variant dark:text-outline-variant">Independent Consultant</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 px-margin-mobile">
+<div class="max-w-container-max mx-auto bg-primary dark:bg-primary-container rounded-[3rem] p-xl md:p-[80px] text-center text-on-primary dark:text-on-primary-container relative overflow-hidden shadow-2xl">
+<div class="relative z-10">
+<h2 class="font-display-lg text-3xl md:text-display-lg mb-md">Ready to Command Your Capital?</h2>
+<p class="text-xl opacity-90 max-w-2xl mx-auto mb-xl">Join the elite league of professionals who leave nothing to chance. Start your 14-day premium trial today.</p>
+<div class="flex flex-col sm:flex-row gap-md justify-center items-center">
+<button class="w-full sm:w-auto px-xl py-4 bg-white dark:bg-on-primary-container text-primary dark:text-primary-container rounded-xl font-title-md text-title-md hover:scale-105 transition-transform shadow-lg" onclick="location.href='#'">Create Professional Account</button>
+<button class="w-full sm:w-auto px-xl py-4 border border-white text-on-primary dark:text-on-primary-container rounded-xl font-title-md text-title-md hover:bg-white/10 transition-all">Speak to Sales</button>
+</div>
+<p class="mt-lg font-body-sm opacity-75">No credit card required • Unlimited transactions • Full security features</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline transition-colors duration-300">
+<div class="w-full px-lg py-xl flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto gap-xl">
+<div class="flex flex-col space-y-md max-w-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-title-md text-title-md font-bold text-on-surface dark:text-on-surface">Modern Fiscal Intelligence</span>
+</div>
+<p class="font-body-sm text-on-surface-variant dark:text-on-surface-variant/80">The professional gold standard for expense tracking and fiscal intelligence reporting.</p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full border border-outline dark:border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm dark:text-on-surface">public</span>
+</a>
+<a class="w-8 h-8 rounded-full border border-outline dark:border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm dark:text-on-surface">alternate_email</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-xl w-full md:w-auto">
+<div class="flex flex-col space-y-sm">
+<p class="font-label-caps text-label-caps text-on-surface dark:text-on-surface font-bold uppercase mb-2">Product</p>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Overview</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Features</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Security</a>
+</div>
+<div class="flex flex-col space-y-sm">
+<p class="font-label-caps text-label-caps text-on-surface dark:text-on-surface font-bold uppercase mb-2">Resources</p>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Help Center</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Contact Support</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">API Docs</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Community</a>
+</div>
+<div class="flex flex-col space-y-sm hidden lg:flex">
+<p class="font-label-caps text-label-caps text-on-surface dark:text-on-surface font-bold uppercase mb-2">Legal</p>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm hover:underline hover:text-primary transition-all" href="#">Security Overview</a>
+</div>
+</div>
+</div>
+<div class="w-full px-lg py-md flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-outline-variant/30">
+<p class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm">© 2024 Modern Fiscal Intelligence. All rights reserved.</p>
+<div class="flex gap-md mt-sm md:mt-0">
+<span class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm">English (US)</span>
+<span class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-sm">v2.4.1</span>
+</div>
+</div>
+</footer>
+<script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const icon = themeToggle.querySelector('.material-symbols-outlined');
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        icon.textContent = 'light_mode';
+    } else {
+        html.classList.remove('dark');
+        icon.textContent = 'dark_mode';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            localStorage.theme = 'light';
+            icon.textContent = 'dark_mode';
+        } else {
+            html.classList.add('dark');
+            localStorage.theme = 'dark';
+            icon.textContent = 'light_mode';
+        }
+    });
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Scroll Reveal Logic
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Sticky Header Scroll Shadow
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md');
+            header.classList.remove('shadow-sm');
+        } else {
+            header.classList.add('shadow-sm');
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body></html>

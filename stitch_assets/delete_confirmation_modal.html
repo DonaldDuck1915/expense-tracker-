@@ -1,0 +1,254 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Delete Confirmation | Modern Fiscal Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "income": "#059669",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-surface": "#191b23",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "background-alt": "#F8FAFC",
+                    "on-error-container": "#93000a",
+                    "on-background": "#191b23",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-container": "#bc4800",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-low": "#f3f3fe",
+                    "inverse-surface": "#2e3039",
+                    "primary-container": "#2563eb",
+                    "background": "#faf8ff",
+                    "surface": "#faf8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary": "#943700",
+                    "inverse-on-surface": "#f0f0fb",
+                    "error-container": "#ffdad6",
+                    "expense": "#DC2626",
+                    "error": "#EF4444",
+                    "on-primary-container": "#eeefff",
+                    "primary": "#004ac6",
+                    "on-secondary-container": "#54647a",
+                    "secondary": "#505f76",
+                    "surface-tint": "#0053db",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-tertiary-container": "#ffede6",
+                    "success": "#10B981",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#360f00",
+                    "outline": "#737686",
+                    "surface-container-high": "#e7e7f3",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-variant": "#e1e2ed",
+                    "surface-container-highest": "#e1e2ed",
+                    "warning": "#F59E0B",
+                    "on-surface-variant": "#434655",
+                    "surface-container": "#ededf9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-overlay {
+            background-color: rgba(25, 27, 35, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .destructive-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="w-full top-0 bg-surface-container-lowest shadow-sm border-b border-outline-variant z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Modern Fiscal Intelligence</span>
+</div>
+<nav class="hidden md:flex items-center space-x-xl">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Dashboard</a>
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer" href="#">Transactions</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Reports</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-caps text-label-caps hover:opacity-90 active:scale-95 transition-all">Add Expense</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a financial manager in a modern office, clean lighting, soft bokeh background, representing trust and professionalism in high-end SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVIgSEuFGRgP_Xt9mCzL16418mjoqQnnz73MRdxmFQmbhuoNulqTPJxmR_bdv7yhhRNWL9M4lnMd2ukWCvb9LwhuZovyQjQERDHXCdGVHcM4aLBRktTyRDfptfIaqP0IMCtrgILG8Z1f_JxmtvhsSuybL8GSgB6UHWrRiFDWjJ412GZpXBD1NZdxOkHFT-_2itiiOJXb9Z_XfnvPyliCMO2-NjPpZbBUuj9431fb40OGKK97--AN9c">
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-md relative">
+<!-- Mock Content Canvas Behind Modal -->
+<div class="w-full max-w-4xl opacity-40 pointer-events-none">
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant space-y-lg">
+<div class="flex justify-between items-center">
+<h1 class="font-headline-lg text-headline-lg">October Transaction History</h1>
+<div class="flex gap-sm">
+<div class="w-24 h-8 bg-surface-container-high rounded animate-pulse"></div>
+<div class="w-32 h-8 bg-surface-container-high rounded animate-pulse"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="h-16 w-full bg-surface-container-high rounded-lg border-2 border-expense/30 shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-expense/5"></div>
+</div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 modal-overlay z-[100] flex items-center justify-center p-md">
+<!-- Delete Confirmation Modal -->
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-2xl border border-outline-variant overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300">
+<!-- Warning Header Section -->
+<div class="p-lg bg-error-container/20 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-error-container flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-expense text-[40px]" data-icon="warning">warning</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Are you sure?</h2>
+<p class="font-body-md text-on-surface-variant max-w-[320px]">
+                        This action will permanently delete the selected transaction record.
+                    </p>
+</div>
+<!-- Impact Statement Canvas -->
+<div class="px-lg py-md space-y-md">
+<div class="p-md rounded-lg bg-surface-container-low border border-outline-variant/50">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline mt-1" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="space-y-base">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Impact Analysis</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Deleting <span class="font-bold text-on-surface">"Cloud Infrastructure Services - Q3"</span> will adjust your <span class="font-bold text-on-surface">Monthly Budget Report</span> by <span class="font-bold text-expense">-$4,250.00</span> and remove all associated tax receipts.
+                                </p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm px-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-expense"></div>
+<p class="font-body-sm text-body-sm text-expense font-medium italic">
+                            This process cannot be undone. All audit trails will be purged.
+                        </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-lg bg-surface-container-low flex flex-col sm:flex-row-reverse gap-md border-t border-outline-variant">
+<button class="flex-1 bg-expense text-on-error px-lg py-md rounded-lg font-label-caps text-label-caps font-bold hover:opacity-90 active:scale-95 transition-all relative overflow-hidden group">
+<span class="relative z-10">Delete Transaction</span>
+<div class="absolute inset-0 destructive-shimmer opacity-0 group-hover:opacity-100"></div>
+</button>
+<button class="flex-1 bg-surface-container-highest text-on-surface-variant px-lg py-md rounded-lg font-label-caps text-label-caps font-bold hover:bg-outline-variant/30 active:scale-95 transition-all">
+                        Cancel Action
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full bottom-0 bg-surface-container border-t border-outline-variant">
+<div class="w-full px-lg py-xl flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-title-md text-title-md font-bold text-on-surface">Modern Fiscal Intelligence</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">© 2024 Modern Fiscal Intelligence. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Contact Support</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Security Overview</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for modal close simulation
+        const cancelBtn = document.querySelector('button:contains("Cancel")') || document.querySelectorAll('button')[2];
+        const deleteBtn = document.querySelector('button:contains("Delete")') || document.querySelectorAll('button')[1];
+        const modal = document.querySelector('.modal-overlay');
+
+        const closeModal = () => {
+            modal.style.opacity = '0';
+            modal.style.pointerEvents = 'none';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        };
+
+        cancelBtn.addEventListener('click', closeModal);
+        deleteBtn.addEventListener('click', () => {
+            deleteBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="refresh">refresh</span> Deleting...';
+            setTimeout(closeModal, 1500);
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body></html>

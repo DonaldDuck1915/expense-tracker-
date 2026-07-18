@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Budget Management | Modern Fiscal Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#004ac6",
+                    "outline": "#737686",
+                    "on-primary-container": "#eeefff",
+                    "tertiary": "#943700",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e2ed",
+                    "secondary": "#505f76",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f3f3fe",
+                    "expense": "#DC2626",
+                    "inverse-surface": "#2e3039",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "secondary-fixed": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary-container": "#ffede6",
+                    "secondary-container": "#d0e1fb",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#faf8ff",
+                    "inverse-on-surface": "#f0f0fb",
+                    "on-background": "#191b23",
+                    "income": "#059669",
+                    "warning": "#F59E0B",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary-container": "#ffede6",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-highest": "#e1e2ed",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "success": "#10B981",
+                    "surface-dim": "#d9d9e5",
+                    "background-alt": "#F8FAFC",
+                    "surface-container-high": "#e7e7f3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "title-md": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 10px rgba(0, 74, 198, 0.2);
+        }
+        .alert-pulse {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface-container-lowest shadow-sm border-b border-outline-variant w-full">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Modern Fiscal Intelligence</span>
+</div>
+<nav class="hidden md:flex items-center space-x-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer font-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer font-body-md" href="#">Transactions</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer font-body-md" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer font-body-md" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-caps hover:opacity-90 transition-opacity active:scale-95">
+                    Add Expense
+                </button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a middle-aged executive with a friendly smile, wearing a charcoal grey suit. The background is a blurred modern office with soft blue and white tones, matching the SaaS professional aesthetic. High-quality studio lighting creates clear, sharp details and a trustworthy atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlF9OjtWuaFgPhpO_1zw2DvHUkdbmPKVLbIXg75p4i99pF8chd-hpCsuo8MFu-TQj0F4XsBTPdv3C3tVWff4TROWb2coFYovwRGidPesFdJDNOLHR24RSIeacWWO-MvhmEzPbaYTGTF5w38qT8tb-_GPz3G6hCC9h6br9jWKQn2oLPXuo-CvLtkcB9sZFim9yq1Y9i6ZYMeug6uJ0N9aeU7-b3z98tHhWsIkZiJN_wuFhw6gKLrewS"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex max-w-container-max mx-auto min-h-[calc(100-64px)]">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full w-[280px] bg-surface-container-low border-r border-outline-variant py-lg space-y-md sticky top-[73px]">
+<div class="px-lg mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-title-md text-title-md font-black text-primary">MFI Dashboard</span>
+</div>
+<p class="text-on-surface-variant font-label-caps opacity-70">Professional Tier</p>
+</div>
+<nav class="flex-1 px-sm">
+<div class="space-y-1">
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps">Overview</span>
+</a>
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps">All Expenses</span>
+</a>
+<a class="flex items-center gap-md px-4 py-2 text-primary font-bold border-l-4 border-primary bg-secondary-container/30 rounded-r-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-caps">Monthly Budget</span>
+</a>
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="ads_click">ads_click</span>
+<span class="font-label-caps">Financial Goals</span>
+</a>
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="shield">shield</span>
+<span class="font-label-caps">Security</span>
+</a>
+</div>
+</nav>
+<div class="px-lg pt-md border-t border-outline-variant space-y-md">
+<div class="bg-primary/5 p-md rounded-xl border border-primary/10">
+<p class="text-on-surface font-label-caps font-bold">Limited Space</p>
+<p class="text-on-surface-variant text-xs mb-sm">Upgrade to unlock unlimited budgets.</p>
+<button class="w-full bg-primary text-white py-1.5 rounded-lg text-xs font-bold active:scale-95 transition-transform">Upgrade Plan</button>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-caps">Help Center</span>
+</a>
+<a class="flex items-center gap-md px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-lg md:p-xl space-y-xl overflow-x-hidden">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Monthly Budgeting</h1>
+<p class="text-on-surface-variant font-body-md mt-sm">Monitor your spending limits and manage your financial health across 12 active categories.</p>
+</div>
+<button class="flex items-center justify-center gap-sm bg-primary text-on-primary px-lg py-md rounded-xl font-title-md shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Create Budget
+                </button>
+</section>
+<!-- Overview Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="col-span-1 md:col-span-2 glass-card rounded-2xl p-lg flex flex-col justify-between h-48 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-fixed rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="savings">savings</span>
+</div>
+<span class="text-success font-label-caps bg-success/10 px-2 py-1 rounded-full">+12% vs last month</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps">TOTAL BUDGET REMAINING</p>
+<h2 class="text-display-lg font-display-lg text-primary mt-xs">$4,280.00</h2>
+</div>
+</div>
+<div class="col-span-1 glass-card rounded-2xl p-lg flex flex-col justify-between h-48 shadow-sm">
+<div class="p-sm bg-secondary-container rounded-lg w-fit">
+<span class="material-symbols-outlined text-secondary" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps">MONTHLY SPENT</p>
+<h3 class="text-title-md font-title-md text-on-surface mt-xs">$2,120.45</h3>
+</div>
+</div>
+<div class="col-span-1 glass-card rounded-2xl p-lg flex flex-col justify-between h-48 shadow-sm">
+<div class="p-sm bg-tertiary-fixed rounded-lg w-fit">
+<span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps">ALERTS</p>
+<h3 class="text-title-md font-title-md text-expense mt-xs">2 Over Budget</h3>
+</div>
+</div>
+</div>
+<!-- Budget Categories Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Housing - On Track -->
+<div class="glass-card rounded-2xl p-lg hover:border-primary/40 transition-all cursor-pointer group shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md">Housing</h4>
+<p class="text-on-surface-variant text-xs">Rent, Utilities, Insurance</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-on-surface-variant">Spent: <span class="text-on-surface font-bold">$1,200</span></span>
+<span class="text-on-surface-variant">Limit: $1,500</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-1000 ease-out progress-bar-glow" style="width: 80%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-on-surface-variant italic">80% consumed</span>
+<span class="text-xs text-primary font-bold">On Track</span>
+</div>
+</div>
+</div>
+<!-- Food - Over Budget Alert -->
+<div class="glass-card border-expense/30 bg-expense/5 rounded-2xl p-lg hover:shadow-md transition-all cursor-pointer relative overflow-hidden shadow-sm">
+<div class="absolute -right-4 -top-4 opacity-5">
+<span class="material-symbols-outlined text-expense text-[120px]" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-expense text-white flex items-center justify-center alert-pulse">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-expense">Food &amp; Dining</h4>
+<p class="text-on-surface-variant text-xs">Groceries, Restaurants</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-expense" data-icon="error">error</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-expense font-bold">Spent: $620</span>
+<span class="text-on-surface-variant">Limit: $500</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-expense h-full rounded-full" style="width: 100%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-expense font-bold">Over by $120.00</span>
+<span class="text-xs bg-expense/10 text-expense px-2 py-0.5 rounded-full font-bold">CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- Entertainment - Warning -->
+<div class="glass-card rounded-2xl p-lg hover:shadow-md transition-all cursor-pointer shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-warning/10 text-warning flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md">Entertainment</h4>
+<p class="text-on-surface-variant text-xs">Streaming, Movies, Fun</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-on-surface-variant">Spent: <span class="text-on-surface font-bold">$185</span></span>
+<span class="text-on-surface-variant">Limit: $200</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-warning h-full rounded-full" style="width: 92.5%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-on-surface-variant italic">92.5% consumed</span>
+<span class="text-xs text-warning font-bold">Warning</span>
+</div>
+</div>
+</div>
+<!-- Transportation -->
+<div class="glass-card rounded-2xl p-lg hover:shadow-md transition-all cursor-pointer shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-success/10 text-success flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="commute">commute</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md">Transport</h4>
+<p class="text-on-surface-variant text-xs">Fuel, Public Transit</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-on-surface-variant">Spent: <span class="text-on-surface font-bold">$115</span></span>
+<span class="text-on-surface-variant">Limit: $350</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-success h-full rounded-full" style="width: 33%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-on-surface-variant italic">33% consumed</span>
+<span class="text-xs text-success font-bold">Healthy</span>
+</div>
+</div>
+</div>
+<!-- Healthcare -->
+<div class="glass-card rounded-2xl p-lg hover:shadow-md transition-all cursor-pointer shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md">Healthcare</h4>
+<p class="text-on-surface-variant text-xs">Insurance, Meds, Visits</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-on-surface-variant">Spent: <span class="text-on-surface font-bold">$0</span></span>
+<span class="text-on-surface-variant">Limit: $250</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 0%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-on-surface-variant italic">0% consumed</span>
+<span class="text-xs text-outline-variant">Unused</span>
+</div>
+</div>
+</div>
+<!-- Shopping -->
+<div class="glass-card border-expense/30 bg-expense/5 rounded-2xl p-lg hover:shadow-md transition-all cursor-pointer relative shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-expense text-white flex items-center justify-center alert-pulse">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-expense">Shopping</h4>
+<p class="text-on-surface-variant text-xs">Clothes, Electronics</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-expense" data-icon="error">error</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps">
+<span class="text-expense font-bold">Spent: $480</span>
+<span class="text-on-surface-variant">Limit: $400</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-expense h-full rounded-full" style="width: 100%"></div>
+</div>
+<div class="flex justify-between items-center pt-xs">
+<span class="text-xs text-expense font-bold">Over by $80.00</span>
+<span class="text-xs bg-expense/10 text-expense px-2 py-0.5 rounded-full font-bold">ALARM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Insight Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<div class="glass-card rounded-2xl p-lg shadow-sm border border-outline-variant">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-title-md text-title-md">Spending Patterns</h4>
+<div class="flex gap-xs">
+<button class="bg-surface-container px-3 py-1 rounded text-xs font-bold text-primary">Weekly</button>
+<button class="px-3 py-1 rounded text-xs font-bold text-on-surface-variant hover:bg-surface-container">Monthly</button>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-2 px-4">
+<div class="w-12 bg-primary/20 rounded-t-lg h-[40%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Mon: $45</div>
+</div>
+<div class="w-12 bg-primary/20 rounded-t-lg h-[65%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Tue: $82</div>
+</div>
+<div class="w-12 bg-expense rounded-t-lg h-[95%] transition-all hover:bg-expense/80 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Wed: $120</div>
+</div>
+<div class="w-12 bg-primary/20 rounded-t-lg h-[30%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Thu: $32</div>
+</div>
+<div class="w-12 bg-primary/20 rounded-t-lg h-[50%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Fri: $58</div>
+</div>
+<div class="w-12 bg-primary/20 rounded-t-lg h-[80%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Sat: $95</div>
+</div>
+<div class="w-12 bg-primary/20 rounded-t-lg h-[45%] transition-all hover:bg-primary/40 relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Sun: $50</div>
+</div>
+</div>
+<div class="flex justify-between px-4 mt-4 text-[10px] font-label-caps text-on-surface-variant">
+<span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-lg shadow-sm border border-outline-variant overflow-hidden relative group">
+<div class="relative z-10">
+<h4 class="font-title-md text-title-md mb-md">Advisor Recommendation</h4>
+<div class="flex items-start gap-md bg-secondary-container/50 p-md rounded-xl">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white" data-icon="psychology">psychology</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Reduce Dining Out</p>
+<p class="text-body-sm text-on-surface-variant mt-xs">You've exceeded your Food budget by 24% this month. Redirecting $50 from Entertainment could help balance your accounts before month-end.</p>
+<button class="mt-md text-primary font-bold text-sm flex items-center gap-xs hover:gap-md transition-all">
+                                    Analyze Details <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative background pattern -->
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant w-full">
+<div class="w-full px-lg py-xl flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="font-title-md text-title-md font-bold text-on-surface">Modern Fiscal Intelligence</span>
+<p class="text-on-surface-variant font-body-sm text-center md:text-left">© 2024 Modern Fiscal Intelligence. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-on-surface-variant font-label-caps hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary hover:underline transition-all" href="#">Contact Support</a>
+<a class="text-on-surface-variant font-label-caps hover:text-primary hover:underline transition-all" href="#">Security Overview</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for creating budget button
+        const createBudgetBtn = document.querySelector('button:contains("Create Budget")');
+        if(createBudgetBtn) {
+            createBudgetBtn.addEventListener('click', () => {
+                alert('Initializing new budget workspace...');
+            });
+        }
+
+        // Logic for card hover effects and interaction
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
